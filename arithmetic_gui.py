@@ -80,6 +80,14 @@ class MathTestApp(tk.Tk):
         top_level = tk.Toplevel(self)
         teacher_menu_app = TeacherMenuApp(top_level, self)
         teacher_menu_app.pack()
+        
+    def check_answer(self, question, given_answer):
+        try:
+            correct_answer = eval(question)
+        except ZeroDivisionError:
+            return False
+
+        return round(correct_answer, 2) == round(given_answer, 2)
 
 
 class TestApp(tk.Frame):
